@@ -1,0 +1,11 @@
+# Python virtual environment
+venv/
+
+# Idle execution folders
+on_idle/
+on_idle_end/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
