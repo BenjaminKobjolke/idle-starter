@@ -4,6 +4,12 @@ This script monitors the system's idle state and executes files based on idle/ac
 
 ## Setup
 
+### Automatic Installation
+
+Run `install.bat` to automatically create a virtual environment and install all required packages.
+
+### Manual Installation
+
 1. Create and activate the Python virtual environment:
 
 ```bash

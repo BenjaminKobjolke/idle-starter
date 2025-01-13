@@ -43,9 +43,7 @@ def execute_file(file_path):
 def execute_folder_files(folder_path):
     """Execute all supported files in the specified folder."""
     folder = Path(folder_path)
-    if not folder.exists():
-        print(f"Folder not found: {folder}")
-        return
+    folder.mkdir(exist_ok=True)  # Create folder if it doesn't exist
 
     supported_extensions = {'.exe', '.bat', '.ps1', '.lnk'}
     
@@ -57,6 +55,10 @@ def main():
     parser = argparse.ArgumentParser(description='Monitor system idle state and execute files.')
     parser.add_argument('idle_time', type=int, help='Idle time threshold in seconds')
     args = parser.parse_args()
+
+    # Create required folders at startup
+    Path('on_idle').mkdir(exist_ok=True)
+    Path('on_idle_end').mkdir(exist_ok=True)
 
     print(f"Monitoring system idle state (threshold: {args.idle_time} seconds)")
     print("Press Ctrl+C to exit")
