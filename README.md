@@ -32,25 +32,27 @@ pip install pywin32
 
 Supported file types:
 
-- Executable files (.exe)
-- Batch files (.bat)
-- PowerShell scripts (.ps1)
-- Windows shortcuts (.lnk)
+-   Executable files (.exe)
+-   Batch files (.bat)
+-   PowerShell scripts (.ps1)
+-   Windows shortcuts (.lnk)
+-   AutoHotkey scripts (.ahk)
 
-Run the script with the desired idle time threshold in seconds:
+Run the script with the desired idle time threshold in seconds (default is 600 seconds if not specified):
 
 ```bash
 python idle_monitor.py 300  # Sets idle threshold to 5 minutes
+python idle_monitor.py     # Uses default threshold of 600 seconds (10 minutes)
 ```
 
 The script will:
 
-- Monitor system idle state
-- Execute all supported files in `on_idle` folder when system becomes idle
-- Execute all supported files in `on_idle_end` folder when system becomes active again
-- Continue monitoring until interrupted with Ctrl+C
+-   Monitor system idle state
+-   Execute all supported files in `on_idle` folder when system becomes idle
+-   Execute all supported files in `on_idle_end` folder when system becomes active again
+-   Continue monitoring until interrupted with Ctrl+C
 
 ## Notes
 
-- The script requires administrative privileges to execute some file types
-- Both `on_idle` and `on_idle_end` folders are excluded from git
+-   The script requires administrative privileges to execute some file types
+-   Both `on_idle` and `on_idle_end` folders are excluded from git
