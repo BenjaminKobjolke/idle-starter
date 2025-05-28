@@ -9,3 +9,5 @@ on_idle_end/
 __pycache__/
 *.py[cod]
 *$py.class
+IdleStarter.spec
+build
