@@ -79,6 +79,20 @@ class IdleMonitorGUI:
                               relief="flat", padx=15, pady=5)
         exit_button.pack(side=tk.RIGHT)
         
+        # Test idle button
+        test_idle_button = tk.Button(button_frame, text="Test idle", command=self.test_idle,
+                                   bg=self.button_bg, fg=self.fg_color, font=("Arial", 9),
+                                   activebackground=self.button_hover, activeforeground=self.fg_color,
+                                   relief="flat", padx=15, pady=5)
+        test_idle_button.pack(side=tk.LEFT)
+
+        # Test idle end button
+        test_idle_end_button = tk.Button(button_frame, text="Test idle end", command=self.test_idle_end,
+                                       bg=self.button_bg, fg=self.fg_color, font=("Arial", 9),
+                                       activebackground=self.button_hover, activeforeground=self.fg_color,
+                                       relief="flat", padx=15, pady=5)
+        test_idle_end_button.pack(side=tk.LEFT, padx=(10, 0))
+
         # Clear log button
         clear_button = tk.Button(button_frame, text="Clear Log", command=self.clear_log,
                                bg=self.button_bg, fg=self.fg_color, font=("Arial", 9),
@@ -112,6 +126,16 @@ class IdleMonitorGUI:
     def clear_log(self):
         """Clear the log text area."""
         self.log_text.delete(1.0, tk.END)
+
+    def test_idle(self):
+        """Manually trigger the idle state actions for testing."""
+        self.log_message("TEST: Manually triggering idle state actions...")
+        execute_folder_files('on_idle', self.log_message)
+
+    def test_idle_end(self):
+        """Manually trigger the idle end actions for testing."""
+        self.log_message("TEST: Manually triggering idle end actions...")
+        execute_folder_files('on_idle_end', self.log_message)
     
     def update_status(self, status, idle_time):
         """Update the status labels."""
