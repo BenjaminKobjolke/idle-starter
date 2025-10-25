@@ -240,13 +240,15 @@ def execute_folder_files(folder_path, log_func):
     folder.mkdir(exist_ok=True)  # Create folder if it doesn't exist
 
     supported_extensions = {'.exe', '.bat', '.ps1', '.lnk', '.ahk'}
-    
+
     executed_count = 0
-    for file_path in folder.glob('*'):
+    files = list(folder.glob('*'))
+
+    for file_path in files:
         if file_path.suffix.lower() in supported_extensions:
             execute_file(file_path, log_func)
             executed_count += 1
-    
+
     if executed_count == 0:
         log_func(f"No files to execute in {folder_path}")
     else:
